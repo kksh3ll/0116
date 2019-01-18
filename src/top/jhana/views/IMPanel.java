@@ -1,5 +1,8 @@
 package top.jhana.views;
 
+import top.jhana.IMClient;
+import top.jhana.actions.LoginAction;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -35,7 +38,14 @@ public abstract class IMPanel extends JSplitPane {
     }
 
     private void initToolBar(JToolBar toolBar) {
+        toolBar.add(new LoginAction(this));
     }
 
+    public abstract IMClient getClient();
+
     public abstract IMContactView createContactsUI();
+
+    public void initContacts() {
+        imContactView.initContacts();
+    }
 }
